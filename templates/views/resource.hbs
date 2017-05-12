@@ -1,0 +1,55 @@
+<div class="container">
+	<h1>This is now the resources page</h1>
+	<h1>Resources</h1>
+
+	{{# each resources}}
+		<p>Here are the resources {{title}} and the {{link}} and the {{category}}</p>
+	{{/each}}
+</div>
+<div class="container">
+	<div class="row">
+		<div class="col-sm-8 col-md-9">
+
+
+
+
+			<h4 class="text-weight-normal">Showing {{resources.length}} resources.</h4>
+
+			{{# each resources}}
+				<p>Here are the resources <a href="{{link}}">{{{title}}}</a> {{title}} and the {{link}} and the {{category}}</p>
+
+
+				
+			{{/each}}
+
+			<p>Hello {{ resources.description}}</p>
+			<div class="resource">
+				{{# each resources.results}}
+					<p>{{title}}</p>
+
+				<div data-ks-editable="{{#if ../user}}{{adminEditableUrl ../../user _id}}{{/if}}" class="resource">
+
+					<h2><a href="{{resourceUrl slug}}">{{{title}}}</a></h2>
+					<h2 class="lead text-muted">{{{categoryList categories prefix="Posted in "}}}
+							{{#if author.name.first}}by {{author.name.first}}{{/if}}
+					</h2>
+
+					<!-- {{#if image}}<img src="{{{cloudinaryUrl image width=160 height=160 crop='fit' }}}" class="img pull-right">{{/if}} -->
+					<p>{{{content.description}}}</p>
+					<!-- {{#if content.extended}}<p class="read-more"><a href="{{postUrl slug}}">Read more...</a></p>{{/if}} -->
+				</div>
+				{{/each}}
+			</div>
+		</div>
+		<div class="col-sm-4 col-md-3">
+			<h2>Categories are down here!</h2>
+			<div style="margin-top: 40px;" class="list-group">
+				<a href="/resource" class="active list-group-item">Yippee.  All Categories</a>
+				{{# each categories }}
+				<a href="{{categoryUrl key}}" class="false list-group-item">{{name}}</a>
+				{{/each}}
+			</div>
+		</div>
+	</div>
+	{{>pagination}}
+</div>
